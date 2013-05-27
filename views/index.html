@@ -1,0 +1,16 @@
+{{#items}}
+<div class="item">
+  <div class="top">
+    <div class="vote-container" style="display:inline;">
+      <a class="vote" href="/item/{{id}}/vote">^</a>
+    </div>
+    <div class="title" style="display:inline;">
+      <a href="{{url}}">{{title}}</a>
+    </div>
+    <div class="domain" style="display:inline;color:#777;font-size:10px;">({{domain url}})</div>
+  </div>
+  <div class="info" style="color:#666;font-size:10px;">
+    {{voteCount}} points by <a href="/user/{{user.username}}">{{user.username}}</a> {{time_ago createdAt}} ago | flag | <a href="/item/{{id}}">27 comments</a>
+  </div>
+</div>
+{{/items}}

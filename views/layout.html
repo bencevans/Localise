@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Localise</title>
+  <style type="text/css">
+  body {
+    color: #111;
+    font-family: Verdana;
+    font-size: 14px;
+  }
+  .container {
+    width: 720px;
+    margin: auto;
+  }
+  header {
+    background-color: #9BD1FE;
+    padding: 5px;
+  }
+  .nav-left {
+    float:left;
+    width: 50%;
+  }
+  .nav-right {
+    margin-left: 50%;
+    text-align: right;
+  }
+  .content {
+    padding: 5px;
+  }
+  #map { height: 140px; }
+  th, tr {
+    text-align: left;
+  }
+  </style>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav-left">
+        <a href="/">Localise</a>
+        <a href="/new">new</a>
+        <a href="/best">best</a>
+        <a href="/submit">submit</a>
+      </div>
+      <div class="nav-right">
+        {{#if currentUser}}
+        <a href="/user/{{currentUser.username}}">{{currentUser.username}}</a> | <a href="/logout">logout</a>
+        {{else}}
+        <a href="/auth">Login</a>
+        {{/if}}
+      </div>
+    </header>
+    <div id="map"></div>
+    <div class="content">
+      {{{body}}}
+    </div>
+  </div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+  <script type="text/javascript">
+  var map = L.map('map').setView([51.505, -0.09], 13).locate({setView:true, maxZoom:10});
+  map.on('locationerror', function(err) {
+    console.log(err);
+  });
+  map.on('locationfound', function(loc) {
+    console.log(loc);
+
+    L.marker(loc.latlng).addTo(map);
+    L.circle(loc.latlng, loc.accuracy, {color:'red'}).addTo(map);
+    var radius = L.circle(loc.latlng, 20000).addTo(map);
+    map.fitBounds(radius.getBounds());
+  });
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  </script>
+</body>
+</html>

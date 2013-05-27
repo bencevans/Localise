@@ -1,0 +1,28 @@
+{
+  "name": "Localise",
+  "version": "0.0.0",
+  "description": "Localised clone of HN/Reddit",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "local",
+    "news",
+    "experiment",
+    "location"
+  ],
+  "author": "Ben Evans <ben@bensbit.co.uk> (http://bensbit.co.uk)",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~3.2.0",
+    "hbs": "~2.1.0",
+    "async": "~0.2.7",
+    "underscore": "~1.4.4",
+    "connect-redis": "~1.4.5"
+  },
+  "devDependencies": {
+    "sqlite3": "~2.1.7"
+  }
+}

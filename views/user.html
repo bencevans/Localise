@@ -1,0 +1,35 @@
+
+<form action="/user/{{user.username}}" method="POST">
+
+
+<table>
+  <tr>
+    <th>username:</th>
+    <td>{{user.username}}</td>
+  </tr>
+  <tr>
+    <th>created:</th>
+    <td>{{user.createdAt}}</td>
+  </tr>
+  <tr>
+    <th>karma:</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>bio:</th>
+    <td>{{user.bio}}<textarea name="bio">{{user.bio}}</textarea></td>
+  </tr>
+  <tr>
+    <th>email:</th>
+    <td>{{user.email}} <input type="text" name="email"> </td>
+  </tr>
+  <tr><td></td><td><a href="#">change password</a></td></tr>
+  <tr><td></td><td><a href="#">saved stories</a></td></tr>
+  <tr><td></td><td><a href="#">submissions</a></td></tr>
+  <tr><td></td><td><a href="#">comments</a></td></tr>
+</table>
+
+<input type="submit" value="update">
+
+</form>
+

@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var db = require('../db');
+
+var syncOptions = { force: (process.env.FORCE) ? true : false }
+
+db.sequelize.sync(syncOptions);
